@@ -5,8 +5,14 @@ using UnityEngine;
 public class CustomPhysics2D : MonoBehaviour {
     public const float GRAVITY_CONST = 9.8f;
 
-    public float gravityScale;
-    public Vector2 velocity;
+    [Tooltip("This controls the scale of the gravity we are applying")]
+    public float gravityScale = 1;
+    public Vector2 velocity { get; set; }
+
+    /// <summary>
+    /// This is the value of the gravity when 
+    /// </summary>
+    private float gravityValue = GRAVITY_CONST;
 
     private void Awake()
     {
