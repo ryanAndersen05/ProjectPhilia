@@ -6,7 +6,7 @@ public class CharacterMovement : MonoBehaviour {
     #region main variables
     [Tooltip("The desired speed when the character is running")]
     public float runSpeed = 7.5f;
-    [Tooltip({"The desired speed when a character is walking. Should typically be slower than the run speed")]
+    [Tooltip("The desired speed when a character is walking. Should typically be slower than the run speed")]
     public float walkSpeed = 4;
 
     [Tooltip("The height at which the character should be able to jump when shooting for a full jump")]
@@ -39,9 +39,16 @@ public class CharacterMovement : MonoBehaviour {
     }
     #endregion monobehaviour methods
 
+    public void SetHorizontalInput(float hInput)
+    {
+        this.hInput = hInput;
+    }
+
     private void UpdateSpeed()
     {
 
     }
+
+
 
 }
