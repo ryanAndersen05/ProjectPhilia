@@ -28,5 +28,15 @@ public class MainGameUI : MonoBehaviour {
     {
         instance = this;
     }
+
+    private void Update()
+    {
+        
+    }
     #endregion monobehaviour methods
+
+    private void CheckPauseGame()
+    {
+
+    }
 }
