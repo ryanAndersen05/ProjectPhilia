@@ -31,12 +31,13 @@ public class MainGameUI : MonoBehaviour {
     private void Awake()
     {
         instance = this;
+        pauseMenu.gameObject.SetActive(false);//By default we probably want to turn off the pause menu when starting a game
 
     }
 
     private void Update()
     {
-        
+        if (Input.GetButtonDown("Start")) CheckPauseGame();
     }
     #endregion monobehaviour methods
 
@@ -45,11 +46,15 @@ public class MainGameUI : MonoBehaviour {
         //Pausing the game should only be allowed if the game is playing normally. And unpausing it would
         if (GameOverseer.Instance.currentGameState == GameOverseer.GameState.Game_Paused)
         {
-
+            GameOverseer.Instance.SetGameState(GameOverseer.GameState.Game_Playing);
+            pauseMenu.gameObject.SetActive(false);
+            Time.timeScale = 1;
         }
         else if (GameOverseer.Instance.currentGameState == GameOverseer.GameState.Game_Playing)
         {
-
+            GameOverseer.Instance.SetGameState(GameOverseer.GameState.Game_Paused);
+            pauseMenu.gameObject.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }
