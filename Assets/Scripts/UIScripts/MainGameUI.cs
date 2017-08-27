@@ -23,10 +23,15 @@ public class MainGameUI : MonoBehaviour {
     }
     #endregion static variables
 
+    #region main variables
+    public RectTransform pauseMenu;
+    #endregion main variables
+
     #region monobehaviour methods
     private void Awake()
     {
         instance = this;
+
     }
 
     private void Update()
@@ -37,6 +42,14 @@ public class MainGameUI : MonoBehaviour {
 
     private void CheckPauseGame()
     {
+        //Pausing the game should only be allowed if the game is playing normally. And unpausing it would
+        if (GameOverseer.Instance.currentGameState == GameOverseer.GameState.Game_Paused)
+        {
 
+        }
+        else if (GameOverseer.Instance.currentGameState == GameOverseer.GameState.Game_Playing)
+        {
+
+        }
     }
 }
