@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Game Overseer will not itself update the game, but instead will act as a central HUB for all info in the game
+/// You can also make updates to this script from other scripts. There just won't be any changes that will occur
+/// from this script without being called by somthing else. This makes it very necessary to ensure that this
+/// script is always in the scene
+/// </summary>
 public class GameOverseer : MonoBehaviour {
     #region enums
     public enum GameState { Game_Playing, Game_Paused }
