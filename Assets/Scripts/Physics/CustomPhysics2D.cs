@@ -64,8 +64,9 @@ public class CustomPhysics2D : MonoBehaviour {
     }
     #endregion apply phyics
 
-    public void SetGravityValueBasedOnJump(float jumpHeight, float timeToTopOfJump)
-    {
 
+    public float SetGravityValueBasedOnJump(float jumpHeight, float timeToTopOfJump)
+    {
+        return 0;
     }
 }

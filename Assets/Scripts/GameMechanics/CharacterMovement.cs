@@ -38,6 +38,7 @@ public class CharacterMovement : MonoBehaviour {
     public bool isFacingRight = true;
 
     private float currentSpeed;
+    private float jumpVelocity;//The velocity we want to apply to the player to achieve the desired height and time
     private CustomPhysics2D rigid;
 
 
@@ -62,6 +63,10 @@ public class CharacterMovement : MonoBehaviour {
     private void OnValidate()
     {
         SetSpriteDirection(this.isFacingRight);
+
+        if (jumpHeight < 0) jumpHeight = 0;
+        if (timeToMaxHeight < 0) timeToMaxHeight = 0;
+        if (rigid) rigid.SetGravityValueBasedOnJump(jumpHeight, timeToMaxHeight);
     }
     #endregion monobehaviour methods
 
