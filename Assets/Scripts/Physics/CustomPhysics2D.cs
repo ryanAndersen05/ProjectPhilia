@@ -5,7 +5,8 @@ using UnityEngine;
 public class CustomPhysics2D : MonoBehaviour {
     public const float GRAVITY_CONST = 9.8f;
 
-    [Tooltip("This controls the scale of the gravity we are applying")]
+    #region main variables
+    [Tooltip("This controls the scale of the gravity we are applying. This can be controlled outside of this script")]
     public float gravityScale = 1;
 
     [Tooltip("The vector that represents the direction that the force of cravity will be applied")]
@@ -17,15 +18,17 @@ public class CustomPhysics2D : MonoBehaviour {
     /// This is the value of the gravity after adjusting for everything but gravity-scale
     /// Please be sure to apply the gravity scale to ensure the correct calculations are acheieved
     /// </summary>
-    private float gravityValue = GRAVITY_CONST;
+    [HideInInspector]
+    public float gravityValue { get; private set; }
+    /// <summary>
+    /// The maximum velocity that can be achieved when in the gravity direction. We can not exceed this y-value
+    /// </summary>
+    [HideInInspector]
+    public float terminalVelocity { get; private set; }
+    #endregion main variables
 
-    private float terminalVelocity = 15f;
 
-    private void Awake()
-    {
-        
-    }
-
+    #region monobehaviour methods
     private void Update()
     {
         UpdatePositionBasedOnVelocity();
@@ -35,7 +38,9 @@ public class CustomPhysics2D : MonoBehaviour {
     {
         UpdateVelocityFromGravity();
     }
+    #endregion monobehaviour methods
 
+    #region apply physics
     /// <summary>
     /// This strictly moves the transform  based on the velocity. Other checks will be necessary to detect
     /// collisions
@@ -57,4 +62,7 @@ public class CustomPhysics2D : MonoBehaviour {
             velocity = new Vector2(velocity.x, -terminalVelocity);
         }
     }
+    #endregion apply phyics
+
+
 }
