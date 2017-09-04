@@ -52,6 +52,7 @@ public class CharacterMovement : MonoBehaviour {
     private void Awake()
     {
         this.rigid = GetComponent<CustomPhysics2D>();
+        CalculateJumpProperties();
     }
 
     private void Update()
@@ -66,8 +67,14 @@ public class CharacterMovement : MonoBehaviour {
 
         if (jumpHeight < 0) jumpHeight = 0;
         if (timeToMaxHeight < 0) timeToMaxHeight = 0;
-        if (rigid) rigid.SetGravityValueBasedOnJump(jumpHeight, timeToMaxHeight);
+        if (!rigid) rigid = GetComponent<CustomPhysics2D>();
+        if (rigid)
+        {
+            CalculateJumpProperties();
+        }
     }
+
+
     #endregion monobehaviour methods
 
     public void SetHorizontalInput(float hInput)
@@ -115,5 +122,11 @@ public class CharacterMovement : MonoBehaviour {
         {
             this.transform.localScale = new Vector3(-Mathf.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
         }
+    }
+
+    private void CalculateJumpProperties()
+    {
+        //print("Step 1");
+        this.jumpVelocity = rigid.SetGravityValueBasedOnJump(jumpHeight, timeToMaxHeight);
     }
 }

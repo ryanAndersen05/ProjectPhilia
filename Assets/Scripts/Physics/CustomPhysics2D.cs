@@ -65,8 +65,24 @@ public class CustomPhysics2D : MonoBehaviour {
     #endregion apply phyics
 
 
-    public float SetGravityValueBasedOnJump(float jumpHeight, float timeToTopOfJump)
+    /// <summary>
+    /// Sets the gravity value of the custom physics and also returns the jump speed required
+    /// to reach the jumpHeight in seconds timeToMaxHeight
+    /// </summary>
+    /// <param name="jumpHeight"></param>
+    /// <param name="timeToMaxHeight"></param>
+    /// <returns></returns>
+    public float SetGravityValueBasedOnJump(float jumpHeight, float timeToMaxHeight)
     {
-        return 0;
+        //print("Step 2");
+        if (jumpHeight == 0 || timeToMaxHeight == 0)
+        {
+            //print("Step 3");
+            gravityValue = 0;
+            return 0;
+        }
+        //print("Step 4");
+        this.gravityValue = (2 * jumpHeight) / Mathf.Pow(timeToMaxHeight, 2);
+        return gravityValue * timeToMaxHeight;
     }
 }

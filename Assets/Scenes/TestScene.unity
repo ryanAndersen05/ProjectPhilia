@@ -474,7 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2a51e09513f0e44931c35755bdcde4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityScale: 0
+  gravityScale: 1
   gravityDirection: {x: 0, y: -1}
 --- !u!114 &1357086418
 MonoBehaviour:
@@ -490,8 +490,8 @@ MonoBehaviour:
   runSpeed: 7.5
   walkSpeed: 4
   groundAcceleration: 25
-  jumpHeight: 5
-  timeToMaxHeight: 1
+  jumpHeight: 6.18
+  timeToMaxHeight: 0.2
   spriteFlipBasedOnInput: 1
   isFacingRight: 1
 --- !u!114 &1357086419

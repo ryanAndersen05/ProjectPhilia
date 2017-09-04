@@ -14,7 +14,10 @@ public class PlayerController : MonoBehaviour {
 
     private void Update()
     {
-        if (characterMovement) characterMovement.SetHorizontalInput(Input.GetAxisRaw("Horizontal"));
+        if (characterMovement)
+        {
+            characterMovement.SetHorizontalInput(Input.GetAxisRaw("Horizontal"));
+        }
     }
 
     #region structs
