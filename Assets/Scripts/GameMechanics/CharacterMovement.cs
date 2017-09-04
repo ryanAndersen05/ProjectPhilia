@@ -4,10 +4,19 @@ using UnityEngine;
 [RequireComponent(typeof(CustomPhysics2D))]
 public class CharacterMovement : MonoBehaviour {
     #region main variables
+    #region const variables
+    /// <summary>
+    /// The value of the horizontal input on the controller that is needed to activate the walk function
+    /// </summary>
+    private const float WALK_THRESHOLD = .15F;
+    /// <summary>
+    /// The minimum value on the controller's horizontal input that is required to activate the run functions
+    /// </summary>
     private const float RUN_THRESHOLD = .7f;
+
     private const bool DIRECTION_RIGHT = true;
     private const bool DIRECTION_LEFT = false;
-
+    #endregion const variables
     [Header("Movement Variables")]
     [Tooltip("The desired speed when the character is running")]
     public float runSpeed = 7.5f;
