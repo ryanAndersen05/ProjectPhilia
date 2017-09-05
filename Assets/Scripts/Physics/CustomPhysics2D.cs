@@ -83,6 +83,7 @@ public class CustomPhysics2D : MonoBehaviour {
         }
         //print("Step 4");
         this.gravityValue = (2 * jumpHeight) / Mathf.Pow(timeToMaxHeight, 2);
+        terminalVelocity = gravityValue * timeToMaxHeight * 1.5f;
         return gravityValue * timeToMaxHeight;
     }
 }
