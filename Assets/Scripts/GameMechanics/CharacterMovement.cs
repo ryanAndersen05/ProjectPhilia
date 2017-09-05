@@ -38,7 +38,7 @@ public class CharacterMovement : MonoBehaviour {
     public bool isFacingRight = true;
 
     private float currentSpeed;
-    private float jumpVelocity;//The velocity we want to apply to the player to achieve the desired height and time
+    private float jumpSpeed;//The speed we want to apply to the player to achieve the desired height and time
     private CustomPhysics2D rigid;
 
 
@@ -124,9 +124,19 @@ public class CharacterMovement : MonoBehaviour {
         }
     }
 
+    public bool Jump(bool jumpButtonDown = true)
+    {
+        if (jumpButtonDown)
+        {
+            rigid.velocity = new Vector2(rigid.velocity.x, 0) + Vector2.up * jumpSpeed;
+            return true;
+        }
+        return false;
+    }
+
     private void CalculateJumpProperties()
     {
         //print("Step 1");
-        this.jumpVelocity = rigid.SetGravityValueBasedOnJump(jumpHeight, timeToMaxHeight);
+        this.jumpSpeed = rigid.SetGravityValueBasedOnJump(jumpHeight, timeToMaxHeight);
     }
 }

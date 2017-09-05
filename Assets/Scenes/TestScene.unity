@@ -490,8 +490,8 @@ MonoBehaviour:
   runSpeed: 7.5
   walkSpeed: 4
   groundAcceleration: 25
-  jumpHeight: 0.89
-  timeToMaxHeight: 0.2
+  jumpHeight: 2.5
+  timeToMaxHeight: 0.3
   spriteFlipBasedOnInput: 1
   isFacingRight: 1
 --- !u!114 &1357086419

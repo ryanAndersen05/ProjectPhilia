@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
         if (characterMovement)
         {
             characterMovement.SetHorizontalInput(Input.GetAxisRaw("Horizontal"));
+            characterMovement.Jump(Input.GetButtonDown("Jump"));
         }
     }
 
