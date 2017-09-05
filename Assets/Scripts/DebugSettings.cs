@@ -21,7 +21,7 @@ public class DebugSettings : MonoBehaviour {
         DrawPoint(worldPoint, scale, Color.red);
     }
 
-    public static void DrawPoint (Vector3 worldPoint, float scale, Color color)
+    public static void DrawPoint(Vector3 worldPoint, float scale, Color color)
     {
         DrawPoint(worldPoint, scale, color, 0.0f);
     }
@@ -45,6 +45,49 @@ public class DebugSettings : MonoBehaviour {
     #endregion DrawPoint overrides
 
     #region DrawLine overrides
+    public static void DrawLineDirection(Vector3 originPoint, Vector3 direction)
+    {
+        DrawLineDirection(originPoint, direction, 1f);
+    }
 
+    public static void DrawLineDirection(Vector3 originPoint, Vector3 direction, float distance)
+    {
+        DrawLineDirection(originPoint, direction, distance, Color.red);
+    }
+
+    public static void DrawLineDirection(Vector3 originPoint, Vector3 direction, float distance, Color color)
+    {
+        DrawLineDirection(originPoint, direction, distance, color, 0.0f);
+    }
+
+    public static void DrawLineDirection(Vector3 originPoint, Vector3 direction, float distance, float duration)
+    {
+        DrawLineDirection(originPoint, direction, distance, Color.red, duration);
+    }
+
+    public static void DrawLineDirection(Vector3 originPoint, Vector3 direction, float distance, Color color, float duration)
+    {
+        DrawLine(originPoint, originPoint + direction * distance, color, duration);
+    }
+
+    public static void DrawLine(Vector3 originPoint, Vector3 endPoint)
+    {
+        DrawLine(originPoint, endPoint, Color.red);
+    }
+
+    public static void DrawLine(Vector3 originPoint, Vector3 endPoint, Color color)
+    {
+        DrawLine(originPoint, endPoint, color, 0.0f);
+    }
+
+    public static void DrawLine(Vector3 originPoint, Vector3 endPoint, float duration)
+    {
+        DrawLine(originPoint, endPoint, Color.red, duration);
+    }
+
+    public static void DrawLine(Vector3 originPoint, Vector3 endPoint, Color color, float duration)
+    {
+        Debug.DrawLine(originPoint, endPoint, color, duration, false);
+    }
     #endregion DrawLine overrides
 }
