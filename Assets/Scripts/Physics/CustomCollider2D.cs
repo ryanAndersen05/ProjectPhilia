@@ -6,18 +6,22 @@ using UnityEngine;
 public class CustomCollider2D : MonoBehaviour {
     #region main variables
     public BoxCollider2D boxCollider;
+
+    private CustomPhysics2D rigid;
+    private BoxCornerStruct colliderBounds;
     #endregion main variables
 
     #region monobehaviour methods
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+        rigid = GetComponent<CustomPhysics2D>();
     }
 
 
     private void Update()
     {
-        
+        colliderBounds = GetCurrentColliderCorners();
     }
     #endregion monobehaviour methods
 
