@@ -5,10 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class CustomCollider2D : MonoBehaviour {
     #region main variables
+    public string[] layerMaskList = new string[] { "Default" };
     public BoxCollider2D boxCollider;
+    public int horizontalRayCount= 2;
+    public int verticalRayCount = 2;
 
     private CustomPhysics2D rigid;
     private BoxCornerStruct colliderBounds;
+    private int layerMask;
     #endregion main variables
 
     #region monobehaviour methods
@@ -16,6 +20,7 @@ public class CustomCollider2D : MonoBehaviour {
     {
         boxCollider = GetComponent<BoxCollider2D>();
         rigid = GetComponent<CustomPhysics2D>();
+        layerMask = LayerMask.GetMask(layerMaskList);
     }
 
 
@@ -23,7 +28,15 @@ public class CustomCollider2D : MonoBehaviour {
     {
         colliderBounds = GetCurrentColliderCorners();
     }
+
+    private void OnValidate()
+    {
+        if (horizontalRayCount < 2) horizontalRayCount = 2;
+        if (verticalRayCount < 2) verticalRayCount = 2;
+    }
     #endregion monobehaviour methods
+
+
 
 
     private BoxCornerStruct GetCurrentColliderCorners()
