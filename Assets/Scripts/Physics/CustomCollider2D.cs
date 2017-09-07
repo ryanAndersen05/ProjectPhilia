@@ -6,13 +6,13 @@ using UnityEngine;
 public class CustomCollider2D : MonoBehaviour {
     #region main variables
     public string[] layerMaskList = new string[] { "Default" };
-    public BoxCollider2D boxCollider;
     public int horizontalRayCount= 2;
     public int verticalRayCount = 2;
 
     private CustomPhysics2D rigid;
     private BoxCornerStruct colliderBounds;
     private int layerMask;
+    private BoxCollider2D boxCollider;
     #endregion main variables
 
     #region monobehaviour methods
@@ -35,6 +35,18 @@ public class CustomCollider2D : MonoBehaviour {
         if (verticalRayCount < 2) verticalRayCount = 2;
     }
     #endregion monobehaviour methods
+
+    private Collider CastRaysToNearestCollider(Vector2 p1, Vector2 p2, int rayCount, Vector2 rayDirection)
+    {
+        Vector2 directionFromP1ToP2 = (p2 - p1).normalized;
+        float magFromP1ToP2 = (p2 - p1).magnitude;
+        Ray2D ray;
+        for (int i = 0; i < rayCount; i++)
+        {
+            ray = new Ray2D(p1 + directionFromP1ToP2 * (magFromP1ToP2 / (rayCount - 1)), rayDirection);
+        }
+        return null;
+    }
 
 
 
