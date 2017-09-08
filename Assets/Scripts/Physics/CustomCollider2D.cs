@@ -27,6 +27,7 @@ public class CustomCollider2D : MonoBehaviour {
     private void Update()
     {
         colliderBounds = GetCurrentColliderCorners();
+        CheckVerticalCollision();
     }
 
     private void OnValidate()
@@ -36,14 +37,34 @@ public class CustomCollider2D : MonoBehaviour {
     }
     #endregion monobehaviour methods
 
-    private Collider CastRaysToNearestCollider(Vector2 p1, Vector2 p2, int rayCount, Vector2 rayDirection)
+    private void CheckVerticalCollision()
+    {
+        if (rigid.velocity.y <= 0)
+        {
+            Collider2D coll = CastRaysToNearestCollider(colliderBounds.bottomLeft, colliderBounds.bottomRight, Vector2.down, verticalRayCount, (rigid.velocity.y * Time.deltaTime));
+            if (coll)
+            {
+                transform.position = new Vector3(transform.position.x, coll.bounds.max.y, transform.position.z);
+            }
+        }
+    }
+
+    private Collider2D CastRaysToNearestCollider(Vector2 p1, Vector2 p2, Vector2 rayDirection, int rayCount, float distance)
     {
         Vector2 directionFromP1ToP2 = (p2 - p1).normalized;
         float magFromP1ToP2 = (p2 - p1).magnitude;
         Ray2D ray;
+        RaycastHit2D hit;
         for (int i = 0; i < rayCount; i++)
         {
-            ray = new Ray2D(p1 + directionFromP1ToP2 * (magFromP1ToP2 / (rayCount - 1)), rayDirection);
+            ray = new Ray2D(p1 + directionFromP1ToP2 * ((magFromP1ToP2 * i) / (rayCount - 1)), rayDirection);
+
+            DebugSettings.DrawLineDirection(ray.origin, ray.direction, distance);
+            hit = Physics2D.Raycast(ray.origin, ray.direction, distance, layerMask);
+            if (hit)
+            {
+                return hit.collider;
+            }
         }
         return null;
     }

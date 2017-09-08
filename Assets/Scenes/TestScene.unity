@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 649663915}
   - component: {fileID: 649663914}
   - component: {fileID: 649663919}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 1357086419}
   - component: {fileID: 1357086420}
   - component: {fileID: 1357086421}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,7 +618,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMaskList:
   - Default
-  boxCollider: {fileID: 0}
   horizontalRayCount: 2
   verticalRayCount: 2
 --- !u!61 &1357086421
@@ -838,7 +837,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2115298017}
   - component: {fileID: 2115298018}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
