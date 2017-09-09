@@ -266,7 +266,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -278,7 +278,7 @@ Camera:
   m_HDR: 1
   m_AllowMSAA: 1
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
@@ -589,8 +589,8 @@ MonoBehaviour:
   runSpeed: 7.5
   walkSpeed: 4
   groundAcceleration: 25
-  jumpHeight: 2.5
-  timeToMaxHeight: 0.3
+  jumpHeight: 3
+  timeToMaxHeight: 0.4
   spriteFlipBasedOnInput: 1
   isFacingRight: 1
 --- !u!114 &1357086419
@@ -619,7 +619,7 @@ MonoBehaviour:
   layerMaskList:
   - Default
   horizontalRayCount: 2
-  verticalRayCount: 2
+  verticalRayCount: 5
 --- !u!61 &1357086421
 BoxCollider2D:
   m_ObjectHideFlags: 0

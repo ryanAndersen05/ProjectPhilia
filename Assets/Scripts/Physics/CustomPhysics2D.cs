@@ -13,7 +13,7 @@ public class CustomPhysics2D : MonoBehaviour {
     public Vector2 gravityDirection = Vector2.down;
 
     /// <summary>
-    /// The velocity that this caracter will move. Measured in  Unity units per second. 1 Unit = 100 pixels
+    /// The velocity that this caracter will move. Measured in  Unity units per second
     /// </summary>
     public Vector2 velocity { get; set; }
 
@@ -34,12 +34,13 @@ public class CustomPhysics2D : MonoBehaviour {
     #region monobehaviour methods
     private void Update()
     {
+        UpdateVelocityFromGravity();
         UpdatePositionBasedOnVelocity();
+        //print(Time.deltaTime);
     }
 
     private void FixedUpdate()
     {
-        UpdateVelocityFromGravity();
     }
     #endregion monobehaviour methods
 
