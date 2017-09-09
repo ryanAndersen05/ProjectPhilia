@@ -12,6 +12,9 @@ public class CustomPhysics2D : MonoBehaviour {
     [Tooltip("The vector that represents the direction that the force of cravity will be applied")]
     public Vector2 gravityDirection = Vector2.down;
 
+    /// <summary>
+    /// The velocity that this caracter will move. Measured in  Unity units per second. 1 Unit = 100 pixels
+    /// </summary>
     public Vector2 velocity { get; set; }
 
     /// <summary>

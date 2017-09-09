@@ -45,6 +45,7 @@ public class CustomCollider2D : MonoBehaviour {
             if (coll)
             {
                 transform.position = new Vector3(transform.position.x, coll.bounds.max.y, transform.position.z);
+                rigid.velocity = new Vector2(rigid.velocity.x, 0);
             }
         }
     }
