@@ -21,13 +21,16 @@ public class CustomPhysics2D : MonoBehaviour {
     /// This is the value of the gravity after adjusting for everything but gravity-scale
     /// Please be sure to apply the gravity scale to ensure the correct calculations are acheieved
     /// </summary>
-    [HideInInspector]
     public float gravityValue { get; private set; }
     /// <summary>
     /// The maximum velocity that can be achieved when in the gravity direction. We can not exceed this y-value
     /// </summary>
-    [HideInInspector]
     public float terminalVelocity { get; private set; }
+    /// <summary>
+    /// Boolean indicating if a character is currently in the air. If there is no custom collider attched, this will always indicate
+    /// that the character is touching the ground
+    /// </summary>
+    public bool inAir { get; set; }
     #endregion main variables
 
 

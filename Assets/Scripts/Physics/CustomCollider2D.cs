@@ -39,6 +39,7 @@ public class CustomCollider2D : MonoBehaviour {
 
     private void CheckVerticalCollision()
     {
+        bool playerIsInAir = true;
         if (rigid.velocity.y <= 0)
         {
             Collider2D coll = CastRaysToNearestCollider(colliderBounds.bottomLeft, colliderBounds.bottomRight, Vector2.down, verticalRayCount, (rigid.velocity.y * Time.deltaTime));
@@ -46,8 +47,10 @@ public class CustomCollider2D : MonoBehaviour {
             {
                 transform.position = new Vector3(transform.position.x, coll.bounds.max.y, transform.position.z);
                 rigid.velocity = new Vector2(rigid.velocity.x, 0);
+                playerIsInAir = false;
             }
         }
+        rigid.inAir = playerIsInAir;
     }
 
     private Collider2D CastRaysToNearestCollider(Vector2 p1, Vector2 p2, Vector2 rayDirection, int rayCount, float distance)
