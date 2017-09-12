@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 114257423366072700}
   - component: {fileID: 114911211055075042}
   - component: {fileID: 61054651477856570}
+  - component: {fileID: 95170036749966934}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -184,6 +185,23 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1345167009301892}
   m_Enabled: 1
+--- !u!95 &95170036749966934
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841617570574574}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1adcd4a818c8cec4b922bf039b6920f3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114099597662794830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,8 +253,8 @@ MonoBehaviour:
   runSpeed: 7.5
   walkSpeed: 4
   groundAcceleration: 25
-  jumpHeight: 5
-  timeToMaxHeight: 0.4
+  jumpHeight: 4.5
+  timeToMaxHeight: 0.5
   spriteFlipBasedOnInput: 1
   isFacingRight: 1
 --- !u!114 &114795484533973972

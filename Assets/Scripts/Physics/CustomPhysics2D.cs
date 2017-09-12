@@ -31,19 +31,23 @@ public class CustomPhysics2D : MonoBehaviour {
     /// that the character is touching the ground
     /// </summary>
     public bool inAir { get; set; }
+
+    private Animator anim;
     #endregion main variables
 
 
     #region monobehaviour methods
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     private void Update()
     {
         UpdateVelocityFromGravity();
         UpdatePositionBasedOnVelocity();
+        anim.SetBool("InAir", inAir);
         //print(Time.deltaTime);
-    }
-
-    private void FixedUpdate()
-    {
     }
     #endregion monobehaviour methods
 
