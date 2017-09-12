@@ -9,6 +9,9 @@ public class CustomPhysics2D : MonoBehaviour {
     [Tooltip("This controls the scale of the gravity we are applying. This can be controlled outside of this script")]
     public float gravityScale = 1;
 
+    [Tooltip("The gravity scale that will be applied to the character's physics only when the character is falling")]
+    public float fallingGravityScale;
+
     [Tooltip("The vector that represents the direction that the force of cravity will be applied")]
     public Vector2 gravityDirection = Vector2.down;
 
@@ -64,7 +67,7 @@ public class CustomPhysics2D : MonoBehaviour {
 
     private void UpdateVelocityFromGravity()
     {
-        float adjustVelocitySpeed = Time.deltaTime * gravityScale * gravityValue;
+        float adjustVelocitySpeed = Time.deltaTime * gravityScale * gravityValue * (velocity.y < 0 ? fallingGravityScale : 1);
 
         velocity += adjustVelocitySpeed * gravityDirection;
 

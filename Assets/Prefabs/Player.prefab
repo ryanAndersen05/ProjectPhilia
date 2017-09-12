@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityScale: 1
+  fallingGravityScale: 1.2
   gravityDirection: {x: 0, y: -1}
 --- !u!114 &114160435512022688
 MonoBehaviour:
