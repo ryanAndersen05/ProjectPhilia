@@ -127,9 +127,9 @@ public class CharacterMovement : MonoBehaviour {
 
     public bool Jump(bool jumpButtonDown = true)
     {
-        if (!doubleJumpActive && rigid.inAir) return false; //Our player should not be allowed to jump if they are in the air and already used their double jump
+        if (!doubleJumpActive && rigid.InAir) return false; //Our player should not be allowed to jump if they are in the air and already used their double jump
 
-        if (jumpButtonDown && !rigid.inAir)
+        if (jumpButtonDown && !rigid.InAir)
         {
             rigid.velocity = new Vector2(rigid.velocity.x, 0) + Vector2.up * jumpSpeed;
             return true;

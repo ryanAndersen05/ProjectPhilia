@@ -29,16 +29,19 @@ public class CustomPhysics2D : MonoBehaviour {
     /// The maximum velocity that can be achieved when in the gravity direction. We can not exceed this y-value
     /// </summary>
     public float terminalVelocity { get; private set; }
+
+
     /// <summary>
     /// Boolean indicating if a character is currently in the air. If there is no custom collider attched, this will always indicate
     /// that the character is touching the ground
     /// </summary>
-    public bool inAir { get
+    public bool InAir { get
         {
             return inAir;
         }
         set
         {
+            inAir = value;
             if (value)
             {
                 OnPlayerAirborne();
@@ -49,6 +52,8 @@ public class CustomPhysics2D : MonoBehaviour {
             }
         }
     }
+
+    private bool inAir;
 
     private Animator anim;
     #endregion main variables
@@ -64,7 +69,7 @@ public class CustomPhysics2D : MonoBehaviour {
     {
         UpdateVelocityFromGravity();
         UpdatePositionBasedOnVelocity();
-        anim.SetBool("InAir", inAir);
+        anim.SetBool("InAir", InAir);
         //print(Time.deltaTime);
     }
     #endregion monobehaviour methods
