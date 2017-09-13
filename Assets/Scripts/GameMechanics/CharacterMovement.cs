@@ -40,6 +40,7 @@ public class CharacterMovement : MonoBehaviour {
     private float currentSpeed;
     private float jumpSpeed;//The speed we want to apply to the player to achieve the desired height and time
     private CustomPhysics2D rigid;
+    private bool doubleJumpActive;
 
 
     /// <summary>
@@ -126,8 +127,16 @@ public class CharacterMovement : MonoBehaviour {
 
     public bool Jump(bool jumpButtonDown = true)
     {
-        if (jumpButtonDown)
+        if (!doubleJumpActive && rigid.inAir) return false; //Our player should not be allowed to jump if they are in the air and already used their double jump
+
+        if (jumpButtonDown && !rigid.inAir)
         {
+            rigid.velocity = new Vector2(rigid.velocity.x, 0) + Vector2.up * jumpSpeed;
+            return true;
+        }
+        else if (jumpButtonDown)
+        {
+            doubleJumpActive = false;
             rigid.velocity = new Vector2(rigid.velocity.x, 0) + Vector2.up * jumpSpeed;
             return true;
         }
@@ -136,7 +145,6 @@ public class CharacterMovement : MonoBehaviour {
 
     private void CalculateJumpProperties()
     {
-        //print("Step 1");
         this.jumpSpeed = rigid.SetGravityValueBasedOnJump(jumpHeight, timeToMaxHeight);
     }
 }

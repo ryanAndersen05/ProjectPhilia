@@ -33,7 +33,22 @@ public class CustomPhysics2D : MonoBehaviour {
     /// Boolean indicating if a character is currently in the air. If there is no custom collider attched, this will always indicate
     /// that the character is touching the ground
     /// </summary>
-    public bool inAir { get; set; }
+    public bool inAir { get
+        {
+            return inAir;
+        }
+        set
+        {
+            if (value)
+            {
+                OnPlayerAirborne();
+            }
+            else
+            {
+                OnPlayerGrounded();
+            }
+        }
+    }
 
     private Animator anim;
     #endregion main variables
@@ -99,5 +114,20 @@ public class CustomPhysics2D : MonoBehaviour {
         this.gravityValue = (2 * jumpHeight) / Mathf.Pow(timeToMaxHeight, 2);
         terminalVelocity = gravityValue * timeToMaxHeight * 1.5f;
         return gravityValue * timeToMaxHeight;
+    }
+
+    /// <summary>
+    /// This method will be called when the player enters a ground tile for the first time after being considered "inAir"
+    /// </summary>
+    private void OnPlayerGrounded()
+    {
+        
+    }
+    /// <summary>
+    /// This method will be called the first time a player is considered inAir after they were previously on the ground
+    /// </summary>
+    private void OnPlayerAirborne()
+    {
+
     }
 }

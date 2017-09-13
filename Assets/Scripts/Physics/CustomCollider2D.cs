@@ -50,7 +50,7 @@ public class CustomCollider2D : MonoBehaviour {
                 playerIsInAir = false;
             }
         }
-        rigid.inAir = playerIsInAir;
+        if (rigid.inAir != playerIsInAir) rigid.inAir = playerIsInAir;
     }
 
     private Collider2D CastRaysToNearestCollider(Vector2 p1, Vector2 p2, Vector2 rayDirection, int rayCount, float distance)
