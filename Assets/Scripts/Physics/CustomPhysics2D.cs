@@ -42,7 +42,7 @@ public class CustomPhysics2D : MonoBehaviour {
         set
         {
             inAir = value;
-            if (value)
+            if (inAir)
             {
                 OnPlayerAirborne();
             }
@@ -126,13 +126,13 @@ public class CustomPhysics2D : MonoBehaviour {
     /// </summary>
     private void OnPlayerGrounded()
     {
-        
+        print("Grounded");
     }
     /// <summary>
     /// This method will be called the first time a player is considered inAir after they were previously on the ground
     /// </summary>
     private void OnPlayerAirborne()
     {
-
+        print("Airborne");
     }
 }

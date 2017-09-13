@@ -42,7 +42,7 @@ public class CustomCollider2D : MonoBehaviour {
         bool playerIsInAir = true;
         if (rigid.velocity.y <= 0)
         {
-            Collider2D coll = CastRaysToNearestCollider(colliderBounds.bottomLeft, colliderBounds.bottomRight, Vector2.down, verticalRayCount, (rigid.velocity.y * Time.deltaTime));
+            Collider2D coll = CastRaysToNearestCollider(colliderBounds.bottomLeft, colliderBounds.bottomRight, Vector2.down, verticalRayCount, Mathf.Abs(rigid.velocity.y * Time.deltaTime - .1f));
             if (coll)
             {
                 transform.position = new Vector3(transform.position.x, coll.bounds.max.y, transform.position.z);
