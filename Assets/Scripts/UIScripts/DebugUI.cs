@@ -25,7 +25,7 @@ public class DebugUI : MonoBehaviour {
         if (velocityList.Count >= frameAverage) SetVelocity();
 
         playerInAirText.text = "Player in air: " + playerStats.rigid.InAir;
-        doubleJumpAvailable.text = "Double Jump Available: " + playerStats.characterMovement.doubleJumpAvailable;
+        doubleJumpAvailable.text = "Double Jump Available: " + !playerStats.characterMovement.doubleJumpUsed;
 
 	}
 
