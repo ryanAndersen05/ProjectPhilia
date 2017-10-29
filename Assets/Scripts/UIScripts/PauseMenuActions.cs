@@ -3,14 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseMenuActions : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void DebugToggle()
+    {
+        MainGameUI.Instance.debugUI.gameObject.SetActive(!MainGameUI.Instance.debugUI.gameObject.activeSelf);
+    }
 }

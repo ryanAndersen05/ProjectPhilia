@@ -14,8 +14,13 @@ public class SelectionMenu : MonoBehaviour {
     private SelectionNode currentSelectionNode;
     private float previousHorizontalInputt;
     private float previousVerticalInput;
-    
+
     #region monobehaviour methods
+    private void Awake()
+    {
+        currentSelectionNode = initialSelectionNode;
+    }
+
     private void OnEnable()
     {
         if (resetSelectionNodeAfterEnable)
@@ -57,6 +62,11 @@ public class SelectionMenu : MonoBehaviour {
                     if (currentSelectionNode.northNode) currentSelectionNode = currentSelectionNode.northNode;
                 }
             }
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            currentSelectionNode.OnActionEvent();
         }
 
         this.previousHorizontalInputt = hInput;

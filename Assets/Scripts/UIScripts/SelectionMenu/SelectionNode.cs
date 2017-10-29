@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class SelectionNode : MonoBehaviour {
     #region enums
@@ -12,13 +13,12 @@ public class SelectionNode : MonoBehaviour {
     #region main variables
     public NodeType selectionNodeType;
 
+    public UnityEvent unityEvent;
+
     public SelectionNode northNode;
     public SelectionNode southNode;
     public SelectionNode eastNode;
     public SelectionNode westNode;
-
-    public delegate void ButtonDelagate();
-    public ButtonDelagate buttonActionEvent;
     #endregion main variables
 
     #region monobehaviour methods
@@ -34,6 +34,6 @@ public class SelectionNode : MonoBehaviour {
 
     public void OnActionEvent()
     {
-
+        unityEvent.Invoke();
     }
 }

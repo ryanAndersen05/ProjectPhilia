@@ -25,6 +25,7 @@ public class MainGameUI : MonoBehaviour {
 
     #region main variables
     public RectTransform pauseMenu;
+    public RectTransform debugUI;
     #endregion main variables
 
     #region monobehaviour methods
