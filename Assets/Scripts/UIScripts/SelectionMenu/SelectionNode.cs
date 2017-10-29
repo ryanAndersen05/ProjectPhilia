@@ -4,8 +4,8 @@ public class SelectionNode : MonoBehaviour {
     #region enums
     public enum NodeType
     {
-        ButtonNode;
-        SliderNode;
+        ButtonNode,
+        SliderNode
     }
     #endregion enums
 
@@ -16,9 +16,24 @@ public class SelectionNode : MonoBehaviour {
     public SelectionNode southNode;
     public SelectionNode eastNode;
     public SelectionNode westNode;
+
+    public delegate void ButtonDelagate();
+    public ButtonDelagate buttonActionEvent;
     #endregion main variables
 
-    #region monobehavior methods
+    #region monobehaviour methods
+    private void OnValidate()
+    {
+        if (selectionNodeType == NodeType.SliderNode)
+        {
+            this.eastNode = null;
+            this.westNode = null;
+        }
+    }
+    #endregion monobehaviour methods
 
-    #endregion monobehavior methods
+    public void OnActionEvent()
+    {
+
+    }
 }
