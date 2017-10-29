@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Update()
     {
+        if (GameOverseer.GameState.Game_Paused == GameOverseer.Instance.currentGameState) return;
         if (characterMovement)
         {
             characterMovement.SetHorizontalInput(Input.GetAxisRaw("Horizontal"));
