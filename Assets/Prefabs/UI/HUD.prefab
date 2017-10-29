@@ -11,6 +11,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1266545326224404}
   m_IsPrefabParent: 1
+--- !u!1 &1092835335506498
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224517485079361790}
+  - component: {fileID: 222323558865491460}
+  - component: {fileID: 114389894915758182}
+  m_Layer: 5
+  m_Name: IsAirborne
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1254671759936598
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +190,7 @@ GameObject:
   - component: {fileID: 222542642709287602}
   - component: {fileID: 114778679124415300}
   m_Layer: 5
-  m_Name: IsAirborne
+  m_Name: DoubleJump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -326,9 +343,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb29d05b316e9d9488b1fdeb89dd4645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSelectionNode: {fileID: 0}
+  initialSelectionNode: {fileID: 114695692498724862}
   resetSelectionNodeAfterEnable: 0
   axisThreshold: 0.5
+--- !u!114 &114389894915758182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1092835335506498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 25
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Player In Air: false'
 --- !u!114 &114427094658929474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -409,12 +459,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953bebc6bc9e5bc4887c68487a9ac00a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeTitle: Button
+  nodeTitle: Debug Settings
   selectionNodeType: 0
-  textBox: {fileID: 0}
+  textBox: {fileID: 114259765079460232}
   buttonEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114367084720449708}
+        m_MethodName: DebugToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   northNode: {fileID: 0}
@@ -453,7 +514,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Player In Air: false'
+  m_Text: 'Double Jump Available: false'
 --- !u!114 &114798356921636226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -531,8 +592,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocityText: {fileID: 114798356921636226}
-  playerInAirText: {fileID: 114778679124415300}
-  frameAverage: 10
+  playerInAirText: {fileID: 114389894915758182}
+  doubleJumpAvailable: {fileID: 114778679124415300}
+  frameAverage: 5
 --- !u!114 &114966246882122450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -566,6 +628,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1658326979694286}
+--- !u!222 &222323558865491460
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1092835335506498}
 --- !u!222 &222542642709287602
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -717,6 +785,7 @@ RectTransform:
   m_Children:
   - {fileID: 224396006158683066}
   - {fileID: 224750970682965034}
+  - {fileID: 224517485079361790}
   - {fileID: 224755499974559112}
   m_Father: {fileID: 224227130812401108}
   m_RootOrder: 0
@@ -725,6 +794,24 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000038147, y: -0.000045776}
   m_SizeDelta: {x: 387.8, y: 748.8}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224517485079361790
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1092835335506498}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000027, y: 1.0000027, z: 1.0000027}
+  m_Children: []
+  m_Father: {fileID: 224482525888204716}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000075548, y: 283.1}
+  m_SizeDelta: {x: 387.8, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224746133019879140
 RectTransform:
@@ -790,14 +877,14 @@ RectTransform:
   m_GameObject: {fileID: 1727227631745936}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000027, y: 1.0000027, z: 1.0000027}
+  m_LocalScale: {x: 1.0000015, y: 1.0000015, z: 1.0000015}
   m_Children: []
   m_Father: {fileID: 224482525888204716}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000075548, y: 283.1}
+  m_AnchoredPosition: {x: 0.000074498, y: 253.1}
   m_SizeDelta: {x: 387.8, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224829219053789074
