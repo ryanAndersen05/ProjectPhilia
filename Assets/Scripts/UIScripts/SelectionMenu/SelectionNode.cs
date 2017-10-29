@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class SelectionNode : MonoBehaviour {
     #region enums
@@ -11,9 +12,11 @@ public class SelectionNode : MonoBehaviour {
     #endregion enums
 
     #region main variables
+    public string nodeTitle = "Button";
     public NodeType selectionNodeType;
+    public Text textBox;
 
-    public UnityEvent unityEvent;
+    public UnityEvent buttonEvent;
 
     public SelectionNode northNode;
     public SelectionNode southNode;
@@ -34,6 +37,17 @@ public class SelectionNode : MonoBehaviour {
 
     public void OnActionEvent()
     {
-        unityEvent.Invoke();
+        buttonEvent.Invoke();
+
+
     }
+    /// <summary>
+    /// This allows us to add any
+    /// </summary>
+    /// <param name="buttonString"></param>
+    public void SetStringOfButton(string buttonString)
+    {
+        textBox.text = nodeTitle + ": " + buttonString;
+    }
+    
 }

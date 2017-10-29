@@ -154,7 +154,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224040813062223102}
-  - component: {fileID: 114531069205722618}
   - component: {fileID: 114367084720449708}
   m_Layer: 5
   m_Name: PauseMenu
@@ -327,6 +326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb29d05b316e9d9488b1fdeb89dd4645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialSelectionNode: {fileID: 0}
+  resetSelectionNodeAfterEnable: 0
+  axisThreshold: 0.5
 --- !u!114 &114427094658929474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -348,20 +350,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114531069205722618
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1720182965965820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca6155de8f2de6e4dab10e6bc178f38e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialSelectionNode: {fileID: 114695692498724862}
-  resetSelectionNodeAfterEnable: 0
-  axisThreshold: 0.5
 --- !u!114 &114632625228113212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,21 +409,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953bebc6bc9e5bc4887c68487a9ac00a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nodeTitle: Button
   selectionNodeType: 0
-  unityEvent:
+  textBox: {fileID: 0}
+  buttonEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1720182965965820}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   northNode: {fileID: 0}

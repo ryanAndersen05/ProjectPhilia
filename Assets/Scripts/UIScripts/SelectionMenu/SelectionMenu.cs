@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectionMenu : MonoBehaviour {
+public abstract class SelectionMenu : MonoBehaviour {
     public SelectionNode initialSelectionNode;
     [Tooltip("Use this variable in order to reset the current node back to the initial node whenever this menu is loaded")]
     public bool resetSelectionNodeAfterEnable;
@@ -11,9 +11,11 @@ public class SelectionMenu : MonoBehaviour {
     public float axisThreshold = 0.5f;
 
 
-    private SelectionNode currentSelectionNode;
+    protected SelectionNode currentSelectionNode;
     private float previousHorizontalInputt;
     private float previousVerticalInput;
+
+    public delegate string ButtonDelegate();
 
     #region monobehaviour methods
     private void Awake()
@@ -71,11 +73,14 @@ public class SelectionMenu : MonoBehaviour {
 
         this.previousHorizontalInputt = hInput;
         this.previousVerticalInput = vInput;
-
-
     }
+
+
     #endregion monobehaviour methods
 
+    protected virtual void UpdateAllNodes()
+    {
 
+    }
 
 }

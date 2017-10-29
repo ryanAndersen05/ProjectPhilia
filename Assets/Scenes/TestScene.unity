@@ -108,6 +108,12 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &163254793 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114695692498724862, guid: c4aad14e694ab874faa617f659586ca6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1169264126}
+  m_Script: {fileID: 11500000, guid: 953bebc6bc9e5bc4887c68487a9ac00a, type: 3}
 --- !u!1 &488245214
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +324,12 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &876121022 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114259765079460232, guid: c4aad14e694ab874faa617f659586ca6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1169264126}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1067494542
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,6 +366,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114695692498724862, guid: c4aad14e694ab874faa617f659586ca6,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4313266235718628, guid: c4aad14e694ab874faa617f659586ca6, type: 2}
       propertyPath: m_LocalPosition.x
       value: 461.5
@@ -406,7 +423,48 @@ Prefab:
       propertyPath: frameAverage
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114695692498724862, guid: c4aad14e694ab874faa617f659586ca6,
+        type: 2}
+      propertyPath: textBox
+      value: 
+      objectReference: {fileID: 876121022}
+    - target: {fileID: 114367084720449708, guid: c4aad14e694ab874faa617f659586ca6,
+        type: 2}
+      propertyPath: initialSelectionNode
+      value: 
+      objectReference: {fileID: 163254793}
+    - target: {fileID: 114695692498724862, guid: c4aad14e694ab874faa617f659586ca6,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114695692498724862, guid: c4aad14e694ab874faa617f659586ca6,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114695692498724862, guid: c4aad14e694ab874faa617f659586ca6,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1905029105}
+    - target: {fileID: 114695692498724862, guid: c4aad14e694ab874faa617f659586ca6,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DebugToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 114695692498724862, guid: c4aad14e694ab874faa617f659586ca6,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114695692498724862, guid: c4aad14e694ab874faa617f659586ca6,
+        type: 2}
+      propertyPath: nodeTitle
+      value: Debug Settings
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114531069205722618, guid: c4aad14e694ab874faa617f659586ca6, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c4aad14e694ab874faa617f659586ca6, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1693978062
