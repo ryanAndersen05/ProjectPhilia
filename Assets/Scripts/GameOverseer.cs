@@ -33,6 +33,7 @@ public class GameOverseer : MonoBehaviour {
 
     #region main variables
     public GameState currentGameState { get; private set; }
+    public PlayerStats player { get; private set; }
     #endregion main variables
 
 
@@ -40,6 +41,7 @@ public class GameOverseer : MonoBehaviour {
     private void Awake()
     {
         instance = this;
+        player = FindObjectOfType<PlayerStats>();
     }
     #endregion monobehaviour methods
 

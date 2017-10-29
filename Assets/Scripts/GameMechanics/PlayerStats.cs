@@ -7,7 +7,12 @@ using UnityEngine;
 /// Specific properties such as speed and jump height will NOT be stored here
 /// </summary>
 public class PlayerStats : MonoBehaviour {
+    public CustomPhysics2D rigid { get; private set; }
     public float maxHealth;
     public float currentHealth{ get; private set;}
 
+    private void Awake()
+    {
+        rigid = GetComponent<CustomPhysics2D>();
+    }
 }
