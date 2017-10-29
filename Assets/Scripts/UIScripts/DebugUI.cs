@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class DebugUI : MonoBehaviour {
     public Text velocityText;
     public Text playerInAirText;
+    public Text doubleJumpAvailable;
 
     [Range(1, 60)]
     public int frameAverage = 10;
@@ -24,6 +25,8 @@ public class DebugUI : MonoBehaviour {
         if (velocityList.Count >= frameAverage) SetVelocity();
 
         playerInAirText.text = "Player in air: " + playerStats.rigid.InAir;
+        doubleJumpAvailable.text = "Double Jump Available: " + playerStats.characterMovement.doubleJumpAvailable;
+
 	}
 
     private void SetVelocity()

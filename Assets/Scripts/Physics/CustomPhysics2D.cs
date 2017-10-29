@@ -126,13 +126,21 @@ public class CustomPhysics2D : MonoBehaviour {
     /// </summary>
     private void OnPlayerGrounded()
     {
-        //print("Grounded");
+        IPhysicsEvent[] physicsEventScripts = GetComponents<IPhysicsEvent>();
+        foreach (IPhysicsEvent pEvent in physicsEventScripts)
+        {
+            pEvent.OnPlayerGrounded();
+        }
     }
     /// <summary>
     /// This method will be called the first time a player is considered inAir after they were previously on the ground
     /// </summary>
     private void OnPlayerAirborne()
     {
-        //print("Airborne");
+        IPhysicsEvent[] physicsEventScripts = GetComponents<IPhysicsEvent>();
+        foreach(IPhysicsEvent pEvent in physicsEventScripts)
+        {
+            pEvent.OnPlayerInAir();
+        }
     }
 }

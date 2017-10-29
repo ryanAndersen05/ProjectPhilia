@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(CustomPhysics2D))]
-public class CharacterMovement : MonoBehaviour {
+public class CharacterMovement : MonoBehaviour, IPhysicsEvent {
     #region main variables
     #region const variables
     /// <summary>
@@ -36,11 +36,12 @@ public class CharacterMovement : MonoBehaviour {
     public bool spriteFlipBasedOnInput = true;
     [Tooltip("Represents the current direction of the sprite. If the sprite is facing right, this will be true. NOTE: If the character is not facing right by default you can change its orientation in the inspector through the Sprite Renderer")]
     public bool isFacingRight = true;
+    public bool doubleJumpUsed { get; private set; }
+
 
     private float currentSpeed;
     private float jumpSpeed;//The speed we want to apply to the player to achieve the desired height and time
     private CustomPhysics2D rigid;
-    private bool doubleJumpActive;
 
 
     /// <summary>
@@ -127,7 +128,7 @@ public class CharacterMovement : MonoBehaviour {
 
     public bool Jump(bool jumpButtonDown = true)
     {
-        if (!doubleJumpActive && rigid.InAir) return false; //Our player should not be allowed to jump if they are in the air and already used their double jump
+        if (doubleJumpUsed && rigid.InAir) return false; //Our player should not be allowed to jump if they are in the air and already used their double jump
 
         if (jumpButtonDown && !rigid.InAir)
         {
@@ -136,7 +137,7 @@ public class CharacterMovement : MonoBehaviour {
         }
         else if (jumpButtonDown)
         {
-            doubleJumpActive = false;
+            this.doubleJumpUsed = true;
             rigid.velocity = new Vector2(rigid.velocity.x, 0) + Vector2.up * jumpSpeed;
             return true;
         }
@@ -147,4 +148,16 @@ public class CharacterMovement : MonoBehaviour {
     {
         this.jumpSpeed = rigid.SetGravityValueBasedOnJump(jumpHeight, timeToMaxHeight);
     }
+
+    #region phyics evnts
+    public void OnPlayerGrounded()
+    {
+        doubleJumpUsed = false;//We can reset the double anytime the character collides with the ground
+    }
+
+    public void OnPlayerInAir()
+    {
+
+    }
+    #endregion physics events
 }
