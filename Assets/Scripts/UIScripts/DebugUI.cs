@@ -40,6 +40,6 @@ public class DebugUI : MonoBehaviour {
 
         averageVelocity /= frameAverage;
         
-        velocityText.text = "Velocity: X - " + averageVelocity.x.ToString("0.00") + " Y - " + averageVelocity.y.ToString("0.00");
+        velocityText.text = "Velocity- X:  " + averageVelocity.x.ToString("0.00") + " Y: " + averageVelocity.y.ToString("0.00");
     }
 }

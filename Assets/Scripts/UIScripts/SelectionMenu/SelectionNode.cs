@@ -15,6 +15,7 @@ public class SelectionNode : MonoBehaviour {
     public string nodeTitle = "Button";
     public NodeType selectionNodeType;
     public Text textBox;
+    public Transform[] pointerPositions = new Transform[0];
 
     public UnityEvent buttonEvent;
 
