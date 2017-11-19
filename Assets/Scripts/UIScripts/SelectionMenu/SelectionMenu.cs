@@ -44,12 +44,10 @@ public abstract class SelectionMenu : MonoBehaviour {
             {
                 if (hInput < 0)
                 {
-                    print(hInput);
                     if (currentSelectionNode.westNode) SetCurrentSelectionNode(currentSelectionNode.westNode);
                 }
                 else
                 {
-                    print(hInput);
                     if (currentSelectionNode.eastNode) SetCurrentSelectionNode(currentSelectionNode.eastNode);
                 }
             }
@@ -61,12 +59,10 @@ public abstract class SelectionMenu : MonoBehaviour {
             {
                 if (vInput < 0)
                 {
-                    print(vInput);
                     if (currentSelectionNode.southNode) SetCurrentSelectionNode(currentSelectionNode.southNode);
                 }
                 else
                 {
-                    print(vInput);
                     if (currentSelectionNode.northNode) SetCurrentSelectionNode(currentSelectionNode.northNode);
                 }
             }
