@@ -25,6 +25,10 @@ public class CharacterMovement : MonoBehaviour, IPhysicsEvent {
     [Tooltip("The acceleration of the character while they are on the ground")]
     public float groundAcceleration = 25f;
 
+    [Header("Air Movement Variables")]
+    public float airSpeed;
+    public float airAcceleration;
+
     [Header("Jump Varaibles")]
     [Tooltip("The height at which the character should be able to jump when shooting for a full jump")]
     public float jumpHeight = 5;
@@ -88,9 +92,21 @@ public class CharacterMovement : MonoBehaviour, IPhysicsEvent {
     private void UpdateSpeed()
     {
         float goalSpeed = 0;
+
         
-        if (Mathf.Abs(this.hInput) > .1f) goalSpeed = Mathf.Sign(this.hInput) * (Mathf.Abs(this.hInput) > RUN_THRESHOLD ? runSpeed : walkSpeed);
-        rigid.velocity = new Vector2(Mathf.MoveTowards(rigid.velocity.x, goalSpeed, Time.deltaTime * groundAcceleration), rigid.velocity.y);
+        if (rigid.InAir && Mathf.Abs(this.hInput) > WALK_THRESHOLD)
+        {
+            goalSpeed = Mathf.Sign(this.hInput) * (Mathf.Abs(this.hInput) > RUN_THRESHOLD ? runSpeed : walkSpeed);
+        }
+        else if (rigid.InAir)
+        {
+            goalSpeed = rigid.velocity.x;
+            if (Mathf.Abs(this.hInput) > WALK_THRESHOLD)
+            {
+                goalSpeed = Mathf.Sign(this.hInput) * this.airSpeed;
+            }
+        }
+        rigid.velocity = new Vector2(Mathf.MoveTowards(rigid.velocity.x, goalSpeed, Time.deltaTime * (rigid.InAir ? airAcceleration : groundAcceleration)), rigid.velocity.y);
     }
 
     /// <summary>
@@ -124,6 +140,11 @@ public class CharacterMovement : MonoBehaviour, IPhysicsEvent {
         {
             this.transform.localScale = new Vector3(-Mathf.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
         }
+    }
+
+    public void SetFastFall(bool fastFall)
+    {
+        rigid.applyFastFallScale = fastFall && rigid.InAir;
     }
 
     public bool Jump(bool jumpButtonDown = true)

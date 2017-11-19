@@ -12,6 +12,9 @@ public class CustomPhysics2D : MonoBehaviour {
     [Tooltip("The gravity scale that will be applied to the character's physics only when the character is falling")]
     public float fallingGravityScale;
 
+    [Tooltip("The fast fall gravity scale multiplier. This will be an additional acceleration scale that will decrease the height of the player jump height")]
+    public float fastFallGravityScale = 1;
+
     [Tooltip("The vector that represents the direction that the force of cravity will be applied")]
     public Vector2 gravityDirection = Vector2.down;
 
@@ -53,6 +56,9 @@ public class CustomPhysics2D : MonoBehaviour {
         }
     }
 
+    [HideInInspector]
+    public bool applyFastFallScale = false;
+
     private bool inAir;
 
     private Animator anim;
@@ -87,7 +93,9 @@ public class CustomPhysics2D : MonoBehaviour {
 
     private void UpdateVelocityFromGravity()
     {
-        float adjustVelocitySpeed = Time.deltaTime * gravityScale * gravityValue * (velocity.y < 0 ? fallingGravityScale : 1);
+        print(applyFastFallScale);
+        float adjustVelocitySpeed = Time.deltaTime * gravityScale * gravityValue * (velocity.y < 0 ? fallingGravityScale : 1) 
+            * (applyFastFallScale ? fastFallGravityScale : 1);
 
         velocity += adjustVelocitySpeed * gravityDirection;
 

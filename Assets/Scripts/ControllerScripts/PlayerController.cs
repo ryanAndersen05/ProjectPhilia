@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+    private const string JUMP_BUTTON = "Jump";
+    private const string HORIZONTAL_AXIS = "Horizontal";
+
     public bool acceptInputs = true;
     CharacterMovement characterMovement;
 
@@ -17,8 +20,9 @@ public class PlayerController : MonoBehaviour {
         if (GameOverseer.GameState.Game_Paused == GameOverseer.Instance.currentGameState) return;
         if (characterMovement)
         {
-            characterMovement.SetHorizontalInput(Input.GetAxisRaw("Horizontal"));
-            characterMovement.Jump(Input.GetButtonDown("Jump"));
+            this.characterMovement.SetHorizontalInput(Input.GetAxisRaw(HORIZONTAL_AXIS));
+            this.characterMovement.Jump(Input.GetButtonDown(JUMP_BUTTON));
+            this.characterMovement.SetFastFall(!Input.GetButton(JUMP_BUTTON));
         }
     }
 
