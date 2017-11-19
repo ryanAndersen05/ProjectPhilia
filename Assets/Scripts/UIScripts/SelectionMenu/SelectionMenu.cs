@@ -9,6 +9,8 @@ public abstract class SelectionMenu : MonoBehaviour {
     [Tooltip("The threshold on the axis required before an action will occur")]
     [Range(0f, 1f)]
     public float axisThreshold = 0.5f;
+    public PointerMovement pointer;
+
 
 
     protected SelectionNode currentSelectionNode;
@@ -20,7 +22,7 @@ public abstract class SelectionMenu : MonoBehaviour {
     #region monobehaviour methods
     private void Awake()
     {
-        currentSelectionNode = initialSelectionNode;
+        SetCurrentSelectionNode(initialSelectionNode);
     }
 
     private void OnEnable()
@@ -42,11 +44,13 @@ public abstract class SelectionMenu : MonoBehaviour {
             {
                 if (hInput < 0)
                 {
-                    if (currentSelectionNode.westNode) currentSelectionNode = currentSelectionNode.westNode;
+                    print(hInput);
+                    if (currentSelectionNode.westNode) SetCurrentSelectionNode(currentSelectionNode.westNode);
                 }
                 else
                 {
-                    if (currentSelectionNode.eastNode) currentSelectionNode = currentSelectionNode.eastNode;
+                    print(hInput);
+                    if (currentSelectionNode.eastNode) SetCurrentSelectionNode(currentSelectionNode.eastNode);
                 }
             }
         }
@@ -57,11 +61,13 @@ public abstract class SelectionMenu : MonoBehaviour {
             {
                 if (vInput < 0)
                 {
-                    if (currentSelectionNode.southNode) currentSelectionNode = currentSelectionNode.southNode;
+                    print(vInput);
+                    if (currentSelectionNode.southNode) SetCurrentSelectionNode(currentSelectionNode.southNode);
                 }
                 else
                 {
-                    if (currentSelectionNode.northNode) currentSelectionNode = currentSelectionNode.northNode;
+                    print(vInput);
+                    if (currentSelectionNode.northNode) SetCurrentSelectionNode(currentSelectionNode.northNode);
                 }
             }
         }
@@ -77,6 +83,15 @@ public abstract class SelectionMenu : MonoBehaviour {
 
 
     #endregion monobehaviour methods
+
+    private void SetCurrentSelectionNode(SelectionNode selectionNode)
+    {
+        this.currentSelectionNode = selectionNode;
+        if (pointer)
+        {
+            pointer.SetNewTargetTransform(currentSelectionNode.pointerPositions[0]);
+        }
+    }
 
     protected virtual void UpdateAllNodes()
     {
