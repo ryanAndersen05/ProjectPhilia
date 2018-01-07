@@ -220,11 +220,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4047490654326352, guid: fb6efd5c7acfa4849924280515b942e2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -7.2
       objectReference: {fileID: 0}
     - target: {fileID: 4047490654326352, guid: fb6efd5c7acfa4849924280515b942e2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.5
+      value: -4.69
       objectReference: {fileID: 0}
     - target: {fileID: 4047490654326352, guid: fb6efd5c7acfa4849924280515b942e2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -254,6 +254,26 @@ Prefab:
         type: 2}
       propertyPath: fastFallGravityScale
       value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114637682773704166, guid: fb6efd5c7acfa4849924280515b942e2,
+        type: 2}
+      propertyPath: airSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114637682773704166, guid: fb6efd5c7acfa4849924280515b942e2,
+        type: 2}
+      propertyPath: runSpeed
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114637682773704166, guid: fb6efd5c7acfa4849924280515b942e2,
+        type: 2}
+      propertyPath: airAcceleration
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114637682773704166, guid: fb6efd5c7acfa4849924280515b942e2,
+        type: 2}
+      propertyPath: groundAcceleration
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb6efd5c7acfa4849924280515b942e2, type: 2}

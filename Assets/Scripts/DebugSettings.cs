@@ -5,7 +5,10 @@ using UnityEngine;
 public class DebugSettings : MonoBehaviour {
 
     #region DrawPoint overrides
-
+    /// <summary>
+    /// Draws a single point at the specified worldPoint that is provideed
+    /// </summary>
+    /// <param name="worldPoint"></param>
     public static void DrawPoint(Vector3 worldPoint)
     {
         DrawPoint(worldPoint, Color.red);
@@ -45,11 +48,22 @@ public class DebugSettings : MonoBehaviour {
     #endregion DrawPoint overrides
 
     #region DrawLine overrides
+    /// <summary>
+    /// Draws a line between one point and the next point
+    /// </summary>
+    /// <param name="originPoint"></param>
+    /// <param name="direction"></param>
     public static void DrawLineDirection(Vector3 originPoint, Vector3 direction)
     {
         DrawLineDirection(originPoint, direction, 1f);
     }
 
+    /// <summary>
+    /// Draws a ray in a specific direction begging at the point that is provided and shooting off in the direction provided
+    /// </summary>
+    /// <param name="originPoint"></param>
+    /// <param name="direction"></param>
+    /// <param name="distance"></param>
     public static void DrawLineDirection(Vector3 originPoint, Vector3 direction, float distance)
     {
         DrawLineDirection(originPoint, direction, distance, Color.red);
@@ -90,4 +104,9 @@ public class DebugSettings : MonoBehaviour {
         Debug.DrawLine(originPoint, endPoint, color, duration, false);
     }
     #endregion DrawLine overrides
+
+    public static void SlowTimeForSeconds(float timeScale, float secondsToSlow)
+    {
+        //TODO
+    }
 }

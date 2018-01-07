@@ -93,7 +93,6 @@ public class CustomPhysics2D : MonoBehaviour {
 
     private void UpdateVelocityFromGravity()
     {
-        print(applyFastFallScale);
         float adjustVelocitySpeed = Time.deltaTime * gravityScale * gravityValue * (velocity.y < 0 ? fallingGravityScale : 1) 
             * (applyFastFallScale ? fastFallGravityScale : 1);
 

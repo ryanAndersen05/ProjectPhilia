@@ -94,7 +94,7 @@ public class CharacterMovement : MonoBehaviour, IPhysicsEvent {
         float goalSpeed = 0;
 
         
-        if (rigid.InAir && Mathf.Abs(this.hInput) > WALK_THRESHOLD)
+        if (!rigid.InAir && Mathf.Abs(this.hInput) > WALK_THRESHOLD)
         {
             goalSpeed = Mathf.Sign(this.hInput) * (Mathf.Abs(this.hInput) > RUN_THRESHOLD ? runSpeed : walkSpeed);
         }
